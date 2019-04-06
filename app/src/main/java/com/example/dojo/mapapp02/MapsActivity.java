@@ -12,6 +12,8 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.UiSettings;
+import com.google.android.gms.maps.model.Circle;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolygonOptions;
@@ -108,16 +110,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //        straight.width(3);
 //        mMap.addPolyline(straight);
 
-        // 地図に図形(ポリゴン)を描く(ロサンゼルス - ソウル - シドニー を結ぶ三角形)
-        LatLng los = new LatLng(34.054267, -118.250177);
-        PolygonOptions options = new PolygonOptions();
-        options.add(los, seoul, sydney);
-        options.strokeColor(Color.BLUE);
-        options.strokeWidth(5);
-        options.fillColor(Color.argb(0x80, 0x00, 0xff, 0xff));
-        mMap.addPolygon(options);
+//        // 地図に図形(ポリゴン)を描く(ロサンゼルス - ソウル - シドニー を結ぶ三角形)
+//        LatLng los = new LatLng(34.054267, -118.250177);
+//        PolygonOptions options = new PolygonOptions();
+//        options.add(los, seoul, sydney);
+//        options.strokeColor(Color.BLUE);
+//        options.strokeWidth(5);
+//        options.fillColor(Color.argb(0x80, 0x00, 0xff, 0xff));
+//        mMap.addPolygon(options);
 
         // 地図に円を描く(東京から半径200kmの範囲をしめす円)
-
+        LatLng tokyo = new LatLng(35.684086, 139.755999);
+        CircleOptions circleOptions = new CircleOptions();
+        circleOptions.center(tokyo);
+        circleOptions.radius(200000);
+        Circle circle = mMap.addCircle(circleOptions);
+        circle.setStrokeColor(Color.argb(0x99, 0x33, 0x99, 0xFF));
+        circle.setStrokeWidth(10.0f);
+        circle.setFillColor(Color.argb(0x44, 0x33, 0x99, 0xFF));
     }
 }
