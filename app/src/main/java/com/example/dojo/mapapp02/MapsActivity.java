@@ -2,6 +2,7 @@ package com.example.dojo.mapapp02;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -86,5 +88,28 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         // カメラをソウルに設定
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(seoul, 15));
+
+        // 地図に線を引く(ロサンゼルス - ソウル間) 直線 + 測地線
+        LatLng los = new LatLng(34.054267, -118.250177);
+        // 測地線
+        PolylineOptions geodesics = new PolylineOptions();
+        geodesics.add(seoul, los);
+        geodesics.geodesic(true);
+        geodesics.color(Color.RED);
+        geodesics.width(3);
+        mMap.addPolyline(geodesics);
+
+        // 直線
+        PolylineOptions straight = new PolylineOptions();
+        straight.add(seoul, los);
+        straight.geodesic(false);
+        straight.color(Color.YELLOW);
+        straight.width(3);
+        mMap.addPolyline(straight);
+
+        // 地図に図形(ポリゴン)を描く(ロサンゼルス - ソウル - シドニー を結ぶ三角形)
+
+        // 地図に円を描く(東京から半径200kmの範囲をしめす円)
+
     }
 }
