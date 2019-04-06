@@ -12,8 +12,12 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.UiSettings;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.Circle;
 import com.google.android.gms.maps.model.CircleOptions;
+import com.google.android.gms.maps.model.GroundOverlay;
+import com.google.android.gms.maps.model.GroundOverlayOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolygonOptions;
@@ -119,14 +123,24 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //        options.fillColor(Color.argb(0x80, 0x00, 0xff, 0xff));
 //        mMap.addPolygon(options);
 
-        // 地図に円を描く(東京から半径200kmの範囲をしめす円)
-        LatLng tokyo = new LatLng(35.684086, 139.755999);
-        CircleOptions circleOptions = new CircleOptions();
-        circleOptions.center(tokyo);
-        circleOptions.radius(200000);
-        Circle circle = mMap.addCircle(circleOptions);
-        circle.setStrokeColor(Color.argb(0x99, 0x33, 0x99, 0xFF));
-        circle.setStrokeWidth(10.0f);
-        circle.setFillColor(Color.argb(0x44, 0x33, 0x99, 0xFF));
+//        // 地図に円を描く(東京から半径200kmの範囲をしめす円)
+//        LatLng tokyo = new LatLng(35.684086, 139.755999);
+//        CircleOptions circleOptions = new CircleOptions();
+//        circleOptions.center(tokyo);
+//        circleOptions.radius(200000);
+//        Circle circle = mMap.addCircle(circleOptions);
+//        // 後からも設定変更できる
+//        circle.setStrokeColor(Color.argb(0x99, 0x33, 0x99, 0xFF));
+//        circle.setStrokeWidth(10.0f);
+//        circle.setFillColor(Color.argb(0x44, 0x33, 0x99, 0xFF));
+
+        // 画像をマップに表示(オーバーレイ)
+        GroundOverlayOptions options = new GroundOverlayOptions();
+        BitmapDescriptor bitmap = BitmapDescriptorFactory.fromResource(R.drawable.ame);
+        options.image(bitmap);
+        options.anchor(0.5f,0.5f);
+        options.position(seoul, 300.0f, 300.0f);
+        GroundOverlay overlay = mMap.addGroundOverlay(options);
+        overlay.setTransparency(0.3f);
     }
 }
