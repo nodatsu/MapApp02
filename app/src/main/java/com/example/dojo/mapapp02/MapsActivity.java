@@ -91,7 +91,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         // ソウルにピンを立てる
         LatLng seoul = new LatLng(37.555277, 126.969014);
-        mMap.addMarker(new MarkerOptions().position(seoul).title("ソウルです"));
+//        mMap.addMarker(new MarkerOptions().position(seoul).title("ソウルです"));
 
         // カメラをソウルに設定
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(seoul, 15));
@@ -134,13 +134,21 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //        circle.setStrokeWidth(10.0f);
 //        circle.setFillColor(Color.argb(0x44, 0x33, 0x99, 0xFF));
 
-        // 画像をマップに表示(オーバーレイ)
-        GroundOverlayOptions options = new GroundOverlayOptions();
-        BitmapDescriptor bitmap = BitmapDescriptorFactory.fromResource(R.drawable.ame);
-        options.image(bitmap);
-        options.anchor(0.5f,0.5f);
-        options.position(seoul, 300.0f, 300.0f);
-        GroundOverlay overlay = mMap.addGroundOverlay(options);
-        overlay.setTransparency(0.3f);
+//        // 画像をマップに表示(オーバーレイ)
+//        GroundOverlayOptions options = new GroundOverlayOptions();
+//        BitmapDescriptor bitmap = BitmapDescriptorFactory.fromResource(R.drawable.ame);
+//        options.image(bitmap);
+//        options.anchor(0.5f,0.5f);
+//        options.position(seoul, 300.0f, 300.0f);
+//        GroundOverlay overlay = mMap.addGroundOverlay(options);
+//        overlay.setTransparency(0.3f);
+
+        // マーカーを画像でカスタマイズ
+        MarkerOptions options = new MarkerOptions();
+        options.position(seoul);
+        options.title("ソウルです。");
+        options.snippet("ここはそうるですよ。");
+        options.icon(BitmapDescriptorFactory.fromResource(R.drawable.yajirushi));
+        mMap.addMarker(options);
     }
 }
