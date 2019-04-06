@@ -1,0 +1,24 @@
+<resources>
+    <!--
+    TODO: Before you run your application, you need a Google Maps API key.
+
+    To get one, follow this link, follow the directions and press "Create" at the end:
+
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=BF:91:3A:03:77:62:10:13:85:0B:CB:FC:40:1F:F3:23:32:4F:C9:94%3Bcom.example.dojo.mapapp02
+
+    You can also add your credentials to an existing key, using these values:
+
+    Package name:
+    BF:91:3A:03:77:62:10:13:85:0B:CB:FC:40:1F:F3:23:32:4F:C9:94
+
+    SHA-1 certificate fingerprint:
+    BF:91:3A:03:77:62:10:13:85:0B:CB:FC:40:1F:F3:23:32:4F:C9:94
+
+    Alternatively, follow the directions here:
+    https://developers.google.com/maps/documentation/android/start#get-key
+
+    Once you have your key (it starts with "AIza"), replace the "google_maps_key"
+    string in this file.
+    -->
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyDHJQVAxd4WtV-nCgvWaZDluc8TURgf8Pg</string>
+</resources>
